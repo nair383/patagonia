@@ -1,221 +1,313 @@
-/* --- CONFIGURACIÓN BASE RÚSTICA-MODERNA --- */
+/* General Reset & Variables */
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #d4a373; /* Un dorado/marrón sutil elegante para sushi */
+    --secondary-color: #e9edc9;
+    --dark-bg: #0b0c10;
+    --card-bg: #1f2833;
+    --text-light: #ffffff;
+    --text-muted: #c5a880; /* Texto de ingredientes destacado */
+    --body-font: 'Poppins', sans-serif;
+    --title-font: 'Bebas Neue', sans-serif;
 }
 
 body {
-    background-color: #111317; /* Fondo carbón oscuro mate */
-    color: #f1f5f9;
-    font-family: 'Segoe UI', Roboto, sans-serif;
+    font-family: var(--body-font);
+    background-color: var(--dark-bg);
+    color: var(--text-light);
     line-height: 1.6;
-    padding-bottom: 90px; /* Espacio extra abajo para que la barra fija no tape el menú */
+    -webkit-text-size-adjust: 100%;
 }
 
-/* --- HEADER ENFOCADO EN LA MARCA --- */
-header {
+.container {
+    width: 92%; /* Un pelín más ancho en celular para aprovechar espacio */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 0;
+}
+
+/* Hero Section */
+.hero {
     position: relative;
-    background: url('https://images.unsplash.com/photo-1543007630-9710e4a00a20?q=80&w=1000&auto=format&fit=crop') no-repeat center center/cover;
+    background: url('https://images.unsplash.com/photo-1579871494447-9811cf80d66c?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+    min-height: 65vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
-    padding: 60px 20px;
-    border-bottom: 2px solid #d97706; /* Detalle color madera cálida */
+    color: white;
+    padding: 2rem 0;
 }
 
-.overlay {
+.hero .overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(17, 19, 23, 0.85);
-    z-index: 1;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), var(--dark-bg));
 }
 
-.header-content {
+.hero-container {
     position: relative;
     z-index: 2;
+    max-width: 800px;
+    padding: 0 1rem;
 }
 
-.logo-title {
-    font-family: 'Georgia', serif;
-    font-size: 2.8rem;
-    color: #ffffff;
+.brand-title {
+    font-family: var(--title-font);
+    font-size: 4rem; /* Ajustado para que no se corte en pantallas chicas */
     font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    letter-spacing: 3px;
+    line-height: 1.1;
+    margin-bottom: 0.8rem;
+    color: #fff;
+    text-shadow: 0 4px 15px rgba(0,0,0,0.8);
 }
 
-.subtitle {
-    color: #d97706; /* Tono madera terracota */
-    font-size: 1.1rem;
-    font-weight: 600;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    margin-top: 4px;
+.hero-subtitle {
+    font-size: 1rem;
+    color: #e4e4e7;
+    margin-bottom: 2rem;
+    font-weight: 300;
 }
 
-.info-header {
-    font-size: 0.8rem;
-    color: #94a3b8;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-top: 15px;
+/* Botones en Celular */
+.hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-items: center;
 }
 
-/* --- CONTENEDOR DE PLATOS --- */
-.menu-container {
+.btn {
+    display: inline-block;
     width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 25px 15px;
+    max-width: 280px;
+    padding: 0.9rem 1.5rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 4px; /* Un look más recto y zen, estilo japonés */
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    text-align: center;
+    letter-spacing: 1px;
 }
 
-/* --- BLOQUES DE CATEGORÍAS --- */
-.category-block {
-    background-color: #181b20; /* Fondo bloque oscuro orgánico */
-    border: 1px solid #242933;
-    border-radius: 8px;
-    padding: 24px 20px;
-    margin-bottom: 25px;
+.btn-primary {
+    background-color: var(--primary-color);
+    color: #000;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+}
+
+/* Info Bar (Horarios / Ubicación) */
+.info-bar {
+    background-color: #12161a;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+    padding: 1.5rem 1rem;
+    border-bottom: 1px solid #242b35;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info-item .icon {
+    font-size: 1.8rem;
+}
+
+.info-item strong {
+    display: block;
+    color: var(--primary-color);
+    font-size: 1rem;
+}
+
+.info-item p {
+    font-size: 0.9rem;
+    color: #a0a0aa;
+}
+
+/* Títulos de Categorías */
+.section-title {
+    font-family: var(--title-font);
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+/* Línea sutil decorativa abajo del título */
+.section-title::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background-color: var(--primary-color);
+    margin: 0.5rem auto 0 auto;
 }
 
 .category-title {
-    font-family: 'Georgia', serif;
-    color: #ffffff;
-    font-size: 1.45rem;
-    text-transform: capitalize;
-    border-bottom: 1px solid #d97706;
-    padding-bottom: 6px;
-    margin-bottom: 15px;
+    font-family: var(--title-font);
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    margin: 2rem 0 1rem 0;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid #242b35;
 }
 
-.category-subtitle {
-    font-size: 0.85rem;
-    color: #94a3b8;
-    font-style: italic;
-    margin-top: -10px;
-    margin-bottom: 20px;
+/* --- MENÚ DE SUSHI RESPONSIVO EN CELULAR --- */
+/* Usamos un diseño de lista limpia en vez de tablas anchas */
+.menu-grid, .menu-grid-two-columns {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
 }
 
-/* --- DISEÑO DE LOS PLATOS --- */
-.menu-item {
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-}
-
-.menu-item:last-child {
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.item-main {
-    display: block;
-}
-
-.item-title {
-    font-weight: 600;
-    color: #f8fafc;
-    font-size: 1.05rem;
-    float: left;
-    width: 75%;
-}
-
-.item-price {
-    font-family: 'Georgia', serif;
-    font-weight: 700;
-    color: #d97706; /* Resalta el precio */
-    font-size: 1.1rem;
-    float: right;
-    text-align: right;
-    width: 25%;
-}
-
-/* Limpieza nativa de floats */
-.clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-.item-description {
-    font-size: 0.85rem;
-    color: #94a3b8;
-    margin-top: 5px;
-    clear: both;
-}
-
-/* --- NOTA DE PIE --- */
-.menu-note {
-    background-color: #1a1816;
-    border: 1px solid #78350f;
+.menu-item-card {
+    background-color: #12161a;
+    padding: 1.2rem;
     border-radius: 6px;
-    padding: 16px;
-    text-align: center;
-    font-size: 0.85rem;
-    color: #fed7aa;
-    margin-top: 25px;
+    border-bottom: 1px solid #242b35;
+    transition: background-color 0.3s;
 }
 
-/* --- DISTRIBUCIÓN MODERNA: BARRA INFERIOR FIJA (STICKY NAV) --- */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #16191f;
-    border-top: 1px solid #2a313d;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.4);
-    z-index: 999;
-    padding: 10px 0;
+/* Nombre del Roll y Precio en la misma línea */
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 0.4rem;
 }
 
-.nav-table {
-    display: table;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-    table-layout: fixed;
-}
-
-.nav-cell {
-    display: table-cell;
-    text-align: center;
-    vertical-align: middle;
-}
-
-.nav-link {
-    display: block;
-    text-decoration: none;
-    color: #94a3b8;
-    transition: color 0.2s;
-}
-
-.nav-icon {
-    display: block;
-    font-size: 1.3rem;
-    margin-bottom: 2px;
-}
-
-.nav-text {
-    display: block;
-    font-size: 0.75rem;
+.item-header h4 {
+    font-size: 1.1rem;
     font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: #fff;
 }
 
-/* Destacar el botón central de WhatsApp */
-.nav-link.nav-highlight {
-    color: #14b8a6; /* Tono verde moderno / esmeralda rústico */
+.item-header .price {
+    font-weight: 700;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    white-space: nowrap;
 }
 
-.nav-link:active {
-    transform: scale(0.95);
+/* Los ingredientes del Sushi ocupan todo el ancho abajo */
+.menu-item-card p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    line-height: 1.4;
 }
 
-/* --- MEDIA QUERIES PARA PANTALLAS GRANDES --- */
-@media (min-width: 480px) {
-    .logo-title { font-size: 3.4rem; }
-    .category-block { padding: 30px 25px; }
+/* Tablas (si es que tienes tablas de combos) */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+    margin-bottom: 1.5rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.menu-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #12161a;
+}
+
+.menu-table th, .menu-table td {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #242b35;
+    text-align: left;
+}
+
+.menu-table th {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Footer */
+footer {
+    background-color: #07080b;
+    padding: 2rem 1rem;
+    text-align: center;
+    border-top: 1px solid #242b35;
+    margin-top: 3rem;
+}
+
+footer p {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+
+footer a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+/* ==========================================
+   MEDIA QUERIES PARA PANTALLAS GRANDES 
+   (Vuelve a la vista de escritorio para PC)
+   ========================================== */
+@media(min-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    .hero {
+        min-height: 70vh;
+    }
+
+    .brand-title {
+        font-size: 5.5rem;
+    }
+
+    .hero-buttons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: auto;
+    }
+
+    .info-bar {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        padding: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 3rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .menu-grid-two-columns {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
 }
